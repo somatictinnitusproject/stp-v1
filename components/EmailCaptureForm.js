@@ -1,7 +1,7 @@
 "use client";
 
 /*
-  EmailCaptureForm — the waitlist sign-up form on result pages.
+  EmailCaptureForm — the early access sign-up form on result pages.
   POSTs to /api/subscribe with email + classification.
   After success, calls onSuccess(email) so the result page can store
   the email in context for the confirmation screen's duration follow-up.
@@ -55,7 +55,7 @@ export default function EmailCaptureForm({
   return (
     <div id="email-capture" className="bg-white border border-line rounded-xl p-8 mb-8">
       <h2 className="text-[20px] font-bold text-body mb-2">
-        {isC ? "Join the community" : "Join the waitlist — get free lifetime access"}
+        {isC ? "Join the community" : "Get early access — free lifetime membership"}
       </h2>
       <p className="text-[15px] text-muted leading-relaxed mb-4">
         {isC
@@ -64,7 +64,7 @@ export default function EmailCaptureForm({
       </p>
       {!isC && (
         <p className="text-[13px] font-medium text-primary mb-4">
-          ↑ {spotsLeft.toLocaleString()} of 2,000 founding member spots remaining
+          Founding member spots are available for the first 2,000 members — free lifetime access when the platform launches.
         </p>
       )}
 

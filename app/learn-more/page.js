@@ -62,6 +62,16 @@ export default function LearnMorePage() {
           in many cases, be reduced.
         </BodyText>
 
+        {/* Research citations — small text block after the mechanism paragraph */}
+        <div className="mt-4 mb-2">
+          <p className="text-sm text-muted font-medium mb-1.5">Research references</p>
+          <p className="text-sm text-muted leading-[1.7]">
+            Ralli et al. — Journal of International Medical Research, 2017<br />
+            Sanchez et al. — PubMed, 2013<br />
+            Lee, Jin &amp; Jin — Audiology Research, 2022
+          </p>
+        </div>
+
         {/* Why most people are not told */}
         <H2>Why most people are not told about this</H2>
         <BodyText>
@@ -117,6 +127,7 @@ export default function LearnMorePage() {
         </div>
 
         <PrimaryButton href="/noise-exposure">Take the Free Test</PrimaryButton>
+        <p className="text-sm text-muted mt-2">Takes ~5 minutes</p>
       </main>
 
       <Footer />

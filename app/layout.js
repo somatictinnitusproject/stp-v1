@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { TestProvider } from "@/context/TestContext";
+import Providers from "@/components/Providers";
 
 /*
   Inter is loaded via Next.js font optimisation — self-hosted at build time,
@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
         <meta name="color-scheme" content="light" />
       </head>
       <body className="bg-site text-body font-sans min-h-screen">
-        <TestProvider>{children}</TestProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

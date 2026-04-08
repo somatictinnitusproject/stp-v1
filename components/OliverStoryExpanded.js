@@ -51,12 +51,17 @@ export default function OliverStoryExpanded() {
       )}
 
       {/* Toggle — py-2 gives a 48px+ touch target on mobile */}
-      <button
+      <div
+        role="button"
+        tabIndex={0}
         onClick={() => setExpanded((v) => !v)}
-        className="inline-block mt-1 py-2 pr-2 text-[14px] font-medium text-primary hover:underline transition-colors duration-150"
+        onTouchEnd={(e) => { e.preventDefault(); setExpanded((v) => !v); }}
+        onKeyDown={(e) => e.key === "Enter" && setExpanded((v) => !v)}
+        style={{ touchAction: "manipulation", cursor: "pointer", WebkitTapHighlightColor: "transparent" }}
+        className="inline-block mt-1 py-2 pr-2 text-[14px] font-medium text-primary hover:underline transition-colors duration-150 select-none"
       >
         {expanded ? "Read less ↑" : "Read more →"}
-      </button>
+      </div>
     </div>
   );
 }

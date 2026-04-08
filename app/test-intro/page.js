@@ -19,7 +19,7 @@ import { INTRO_VIDEO } from "@/config/videos";
 
 const BULLETS = [
   "Some movements may briefly change your tinnitus — that is exactly what we are looking for",
-  "One question requires lying on the floor",
+  "One question works best lying down — if that's not possible, there's an option to indicate that on the question itself and your score will adjust accordingly",
   "Honest responses matter more than any particular result",
   "The test takes around 5 minutes",
 ];

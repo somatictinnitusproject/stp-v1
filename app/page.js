@@ -22,6 +22,16 @@ function Divider() {
   return <div className="h-px bg-line my-12" />;
 }
 
+// Tick list item — matches the style used on learn-more and result pages
+function TickItem({ children }) {
+  return (
+    <li className="relative text-[15px] text-muted py-2.5 pl-6 border-b border-line last:border-b-0 leading-relaxed">
+      <span className="absolute left-0 font-semibold text-primary">✓</span>
+      {children}
+    </li>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
@@ -29,7 +39,8 @@ export default function HomePage() {
 
       <main>
         {/* ─── HERO ─────────────────────────────────────────────────────────── */}
-        <section className="max-w-2xl mx-auto px-6 pt-20 pb-16">
+        {/* pb reduced from pb-16 to pb-8 to close dead space between hero and next section */}
+        <section className="max-w-2xl mx-auto px-6 pt-20 pb-8">
           <span className="inline-block text-[12px] font-semibold text-primary uppercase tracking-[0.08em] mb-5">
             Somatic Tinnitus
           </span>
@@ -44,10 +55,12 @@ export default function HomePage() {
             most forms of tinnitus, it can often be addressed.
           </p>
 
+          {/* CTA buttons */}
           <div className="flex flex-wrap gap-3">
             <PrimaryButton href="/noise-exposure">Take the Free Test</PrimaryButton>
             <SecondaryButton href="/learn-more">Learn More</SecondaryButton>
           </div>
+          <p className="text-sm text-muted mt-2">Takes ~5 minutes</p>
         </section>
 
         {/* ─── BELOW FOLD ───────────────────────────────────────────────────── */}
@@ -82,8 +95,9 @@ export default function HomePage() {
           <Divider />
 
           <SectionLabel>Oliver's story</SectionLabel>
+          {/* Heading updated to reflect the personal transformation */}
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
-            Built from personal experience
+            From debilitating tinnitus to silence. Here's what changed.
           </h2>
 
           {/* Static story card — links to Learn More for the full story */}
@@ -106,6 +120,37 @@ export default function HomePage() {
 
           <Divider />
 
+          <SectionLabel>What you get access to</SectionLabel>
+          <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
+            What you get access to
+          </h2>
+
+          {/* Intro sentence */}
+          <p className="text-[16px] text-muted leading-[1.7] max-w-[580px] mb-4">
+            The Somatic Tinnitus Project is a structured five-phase framework
+            for identifying and addressing somatic tinnitus — built around the
+            same process that enabled Oliver to go from debilitating tinnitus to
+            silence.
+          </p>
+
+          {/* Tick list */}
+          <ul className="list-none mb-4 max-w-[580px]">
+            <TickItem>Guided self-assessment identifying your specific driver pattern</TickItem>
+            <TickItem>Personalised TMJ and cervical protocols matched to your profile</TickItem>
+            <TickItem>Daily progress tracker with visual trend graphs</TickItem>
+            <TickItem>Exercise library with video demonstrations</TickItem>
+            <TickItem>A community of people working through the same process</TickItem>
+          </ul>
+
+          {/* Closing line */}
+          <p className="text-[15px] text-muted leading-[1.7] max-w-[580px]">
+            Founding members — the first 2,000 to sign up — get full access
+            permanently at no cost. After that, membership opens at £2.99 per
+            month.
+          </p>
+
+          <Divider />
+
           <SectionLabel>The test</SectionLabel>
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
             What the test does
@@ -118,6 +163,7 @@ export default function HomePage() {
 
           <div className="mt-7">
             <PrimaryButton href="/noise-exposure">Take the Free Test</PrimaryButton>
+            <p className="text-sm text-muted mt-2">Takes ~5 minutes</p>
           </div>
         </section>
       </main>

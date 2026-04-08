@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function Nav() {
   return (
-    <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-line">
+    <nav className="sticky top-0 z-50 bg-white border-b border-line">
       <div className="max-w-2xl mx-auto px-6 h-[60px] flex items-center justify-between">
         {/* Logo */}
         <Link

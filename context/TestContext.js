@@ -42,6 +42,10 @@ const initialState = {
   // Used in scoring to track asymmetric response
   m4Asymmetric: false,
 
+  // M3-specific flag: set true when user selects "Unable to perform" on M3.
+  // Reduces movementMax from 16 to 12 and applies adjusted classification thresholds.
+  m3Unable: false,
+
   // Running totals — updated after each question
   movementScore: 0, // max 16
   symptomScore: 0,  // max 17
@@ -88,12 +92,19 @@ export function TestProvider({ children }) {
         0
       );
 
+      // Track M3 unable flag — clears if user goes back and changes their answer
+      const m3Unable =
+        questionId === "M3"
+          ? response.label === "Unable to perform"
+          : prev.m3Unable;
+
       return {
         ...prev,
         responses: updatedResponses,
         movementScore,
         symptomScore,
         totalScore: movementScore + symptomScore,
+        m3Unable,
       };
     });
   }
@@ -104,21 +115,36 @@ export function TestProvider({ children }) {
   }
 
   /*
-    Scoring logic as specified in CLAUDE.md:
+    Scoring logic:
 
-    Movement max: 16 points
-    Symptom max:  17 points
-    Total max:    33 points
+    Standard thresholds (movementMax = 16):
+      if movementScore >= 9                              → Result A
+      else if total >= 20 AND movementScore >= 8        → Result A
+      else if total >= 20 AND movementScore < 8         → Result B
+      else if total >= 14 AND movementScore >= 7        → Result B
+      else if total >= 12                               → Result B
+      else if movementScore >= 6                        → Result B
+      else                                              → Result C
 
-    if movementScore >= 9                              → Result A
-    else if total >= 20 AND movementScore >= 8        → Result A
-    else if total >= 20 AND movementScore < 8         → Result B
-    else if total >= 14 AND movementScore >= 7        → Strong B (still B)
-    else if total >= 12                               → Result B
-    else if movementScore >= 6                        → Result B
-    else                                              → Result C
+    Adjusted thresholds when m3Unable = true (movementMax = 12):
+      if movementScore >= 7                              → Result A
+      else if total >= 20 AND movementScore >= 6        → Result A
+      else if total >= 20 AND movementScore < 6         → Result B
+      else if total >= 14 AND movementScore >= 5        → Result B
+      else if total >= 12                               → Result B
+      else if movementScore >= 5                        → Result B
+      else                                              → Result C
   */
-  function calculateClassification(movementScore, totalScore) {
+  function calculateClassification(movementScore, totalScore, m3Unable = false) {
+    if (m3Unable) {
+      if (movementScore >= 7) return "A";
+      if (totalScore >= 20 && movementScore >= 6) return "A";
+      if (totalScore >= 20 && movementScore < 6) return "B";
+      if (totalScore >= 14 && movementScore >= 5) return "B";
+      if (totalScore >= 12) return "B";
+      if (movementScore >= 5) return "B";
+      return "C";
+    }
     if (movementScore >= 9) return "A";
     if (totalScore >= 20 && movementScore >= 8) return "A";
     if (totalScore >= 20 && movementScore < 8) return "B";
@@ -133,7 +159,8 @@ export function TestProvider({ children }) {
     setTestState((prev) => {
       const classification = calculateClassification(
         prev.movementScore,
-        prev.totalScore
+        prev.totalScore,
+        prev.m3Unable
       );
       return { ...prev, classification, testComplete: true };
     });

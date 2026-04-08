@@ -41,14 +41,17 @@ function ScoreBar({ label, score, max }) {
   );
 }
 
-export default function ScoreBreakdown({ movementScore, symptomScore }) {
+export default function ScoreBreakdown({ movementScore, symptomScore, movementMax = 16 }) {
   return (
     <div className="bg-white border border-line rounded-[10px] px-6 py-5 mb-7">
       <p className="text-[12px] font-semibold text-muted uppercase tracking-[0.07em] mb-3.5">
         Your score breakdown
       </p>
-      <ScoreBar label="Movement responses" score={movementScore} max={16} />
+      <ScoreBar label="Movement responses" score={movementScore} max={movementMax} />
       <ScoreBar label="Symptom history" score={symptomScore} max={17} />
+      <p className="text-sm text-muted mt-3 leading-relaxed">
+        Movement score shows how strongly your tinnitus responds to jaw and neck load. Symptom score reflects the wider pattern of somatic involvement.
+      </p>
     </div>
   );
 }

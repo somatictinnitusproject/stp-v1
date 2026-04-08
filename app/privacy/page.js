@@ -43,10 +43,10 @@ export default function PrivacyPage() {
             The Somatic Tinnitus Project is operated by Oliver (sole trader, UK).
             If you have any questions about this policy, contact us at{" "}
             <a
-              href="mailto:hello@somatictinnitusproject.com"
+              href="mailto:somatictinnitusproject@gmail.com"
               className="text-primary underline hover:text-primary-hover transition-colors duration-150"
             >
-              hello@somatictinnitusproject.com
+              somatictinnitusproject@gmail.com
             </a>
             .
           </p>
@@ -58,7 +58,7 @@ export default function PrivacyPage() {
           </p>
           <ul className="list-none pl-0 space-y-1.5">
             {[
-              "Your email address, when you join the waitlist",
+              "Your email address, when you sign up for early access",
               "Your test result classification (A, B, or C)",
               "Your tinnitus duration, if you choose to share it (optional)",
             ].map((item) => (
@@ -143,10 +143,10 @@ export default function PrivacyPage() {
             to access, correct, or delete the personal data we hold about you.
             To exercise any of these rights, email us at{" "}
             <a
-              href="mailto:hello@somatictinnitusproject.com"
+              href="mailto:somatictinnitusproject@gmail.com"
               className="text-primary underline hover:text-primary-hover transition-colors duration-150"
             >
-              hello@somatictinnitusproject.com
+              somatictinnitusproject@gmail.com
             </a>
             .
           </p>

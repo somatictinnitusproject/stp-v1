@@ -25,18 +25,23 @@ export default function TimedPrompt({ options, onSelect }) {
   return (
     <div className="flex flex-col gap-2.5 w-full">
       {options.map(({ label }) => (
-        <button
+        <div
           key={label}
+          role="button"
+          tabIndex={0}
           onClick={() => handleSelect(label)}
+          onTouchEnd={(e) => { e.preventDefault(); handleSelect(label); }}
+          onKeyDown={(e) => e.key === "Enter" && handleSelect(label)}
+          style={{ touchAction: "manipulation", cursor: "pointer", WebkitTapHighlightColor: "transparent" }}
           className={[
-            "w-full text-left bg-white border-[1.5px] rounded-lg px-5 py-4 text-[15px] font-medium transition-colors duration-150",
+            "w-full text-left bg-white border-[1.5px] rounded-lg px-5 py-4 text-[15px] font-medium transition-colors duration-150 select-none",
             selected === label
               ? "border-primary bg-teal-bg text-primary"
-              : "border-line text-body hover:border-primary hover:bg-teal-bg",
+              : "border-line text-body",
           ].join(" ")}
         >
           {label}
-        </button>
+        </div>
       ))}
     </div>
   );

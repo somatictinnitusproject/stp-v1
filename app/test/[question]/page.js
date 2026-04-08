@@ -137,8 +137,8 @@ export default function QuestionPage({ params }) {
       setShowingLoader(true);
       finaliseTest();
       setTimeout(() => {
-        const { movementScore, totalScore } = testState;
-        const classification = computeClassification(movementScore, totalScore);
+        const { movementScore, totalScore, m3Unable } = testState;
+        const classification = computeClassification(movementScore, totalScore, m3Unable);
         router.push(`/result/${classification.toLowerCase()}`);
       }, 1750);
     } else {
@@ -161,12 +161,15 @@ export default function QuestionPage({ params }) {
   */
   if (showingLoader) {
     return (
-      <div className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-center gap-6">
+      <div className="fixed inset-0 bg-[#F8F7F4] z-50 flex flex-col items-center justify-center gap-6">
         {/* Teal spinning ring */}
         <div className="w-12 h-12 rounded-full border-4 border-line border-t-primary animate-spin" />
-        <p className="text-[16px] font-medium text-muted tracking-[-0.01em]">
-          Analysing your responses…
-        </p>
+        <div className="text-center">
+          <p className="text-[16px] font-medium text-muted tracking-[-0.01em]">
+            Analysing your responses…
+          </p>
+          <p className="text-sm text-muted mt-1">This takes just a moment</p>
+        </div>
       </div>
     );
   }
@@ -226,6 +229,14 @@ export default function QuestionPage({ params }) {
           ))}
         </div>
 
+        {/* M3 unable-to-perform note — explains score adjustment to user */}
+        {q.id === "M3" && (
+          <p className="text-[13px] text-muted mt-3 leading-relaxed">
+            Selecting "Unable to perform" adjusts your score to account for
+            the missing movement — it will not unfairly affect your result.
+          </p>
+        )}
+
         {/* Navigation row */}
         <div className="flex justify-between items-center mt-8 pt-6 border-t border-line">
           <button
@@ -251,9 +262,19 @@ export default function QuestionPage({ params }) {
   Scoring logic is duplicated here (also in TestContext) because finaliseTest()
   uses setState which is async — we need the classification synchronously to
   navigate to the right result URL before the state update settles.
-  Both implementations must stay in sync with CLAUDE.md scoring spec.
+  Both implementations must stay in sync with TestContext.js scoring spec.
+  Includes adjusted thresholds when m3Unable = true (movementMax drops from 16 to 12).
 */
-function computeClassification(movementScore, totalScore) {
+function computeClassification(movementScore, totalScore, m3Unable = false) {
+  if (m3Unable) {
+    if (movementScore >= 7) return "A";
+    if (totalScore >= 20 && movementScore >= 6) return "A";
+    if (totalScore >= 20 && movementScore < 6) return "B";
+    if (totalScore >= 14 && movementScore >= 5) return "B";
+    if (totalScore >= 12) return "B";
+    if (movementScore >= 5) return "B";
+    return "C";
+  }
   if (movementScore >= 9) return "A";
   if (totalScore >= 20 && movementScore >= 8) return "A";
   if (totalScore >= 20 && movementScore < 8) return "B";
