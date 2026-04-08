@@ -19,7 +19,7 @@ export default function Footer() {
           Privacy Policy
         </Link>
         {" "}·{" "}
-        <span>© 2025 Somatic Tinnitus Project</span>
+        <span>© 2026 Somatic Tinnitus Project</span>
       </p>
     </footer>
   );

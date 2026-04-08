@@ -18,7 +18,8 @@ export default function ProgressBar({ current, total = 14, section }) {
         <span>Question {current} of {total}</span>
         {section && <span>{section}</span>}
       </div>
-      <div className="h-1 bg-line rounded-full overflow-hidden">
+      {/* h-1.5 = 6px; bg-[#D1D5DB] gives clear contrast against #F8F7F4 background */}
+      <div className="h-1.5 bg-[#D1D5DB] rounded-full overflow-hidden">
         <div
           className="h-full bg-primary rounded-full transition-[width] duration-400 ease-out"
           style={{ width: `${percent}%` }}

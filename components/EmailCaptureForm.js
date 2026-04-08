@@ -62,11 +62,6 @@ export default function EmailCaptureForm({
           ? "Even if somatic tinnitus is not your primary issue, the Somatic Tinnitus Project community shares research, experiences, and support. Free to join, no obligation."
           : "The Somatic Tinnitus Project is launching soon. The first 2,000 people to sign up get full access forever — no subscription fee, ever."}
       </p>
-      {!isC && (
-        <p className="text-[13px] font-medium text-primary mb-4">
-          Founding member spots are available for the first 2,000 members — free lifetime access when the platform launches.
-        </p>
-      )}
 
       <form onSubmit={handleSubmit}>
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-2.5">

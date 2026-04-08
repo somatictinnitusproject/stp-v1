@@ -9,6 +9,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PrimaryButton from "@/components/PrimaryButton";
 import OliverStoryExpanded from "@/components/OliverStoryExpanded";
+import LearnMoreProgress from "@/components/LearnMoreProgress";
 
 export const metadata = {
   title: "What is somatic tinnitus? — The Somatic Tinnitus Project",
@@ -40,6 +41,8 @@ export default function LearnMorePage() {
   return (
     <>
       <Nav />
+      {/* Sticky scroll progress — mobile only, shows fill % and current section name */}
+      <LearnMoreProgress />
 
       <main className="max-w-[680px] mx-auto px-6 pt-16 pb-20">
 
@@ -62,10 +65,12 @@ export default function LearnMorePage() {
           in many cases, be reduced.
         </BodyText>
 
-        {/* Research citations — small text block after the mechanism paragraph */}
-        <div className="mt-4 mb-2">
-          <p className="text-sm text-muted font-medium mb-1.5">Research references</p>
-          <p className="text-sm text-muted leading-[1.7]">
+        {/* Research citations — styled block, separated from body copy above */}
+        <div className="mt-5 mb-2 border-t border-line pt-4">
+          <p className="text-[11px] font-bold text-primary uppercase tracking-[0.1em] mb-2.5">
+            Research References
+          </p>
+          <p className="text-[13px] text-muted leading-[1.8]">
             Ralli et al. — Journal of International Medical Research, 2017<br />
             Sanchez et al. — PubMed, 2013<br />
             Lee, Jin &amp; Jin — Audiology Research, 2022

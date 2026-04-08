@@ -175,20 +175,53 @@ const CONTENT = {
   },
 };
 
+// SVG icons for feature tiles — teal, sized to match the phase number boxes
+function IconBarChart() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <rect x="1" y="11" width="4" height="8" rx="1" fill="#4A9B8E" />
+      <rect x="8" y="6" width="4" height="13" rx="1" fill="#4A9B8E" />
+      <rect x="15" y="1" width="4" height="18" rx="1" fill="#4A9B8E" />
+    </svg>
+  );
+}
+
+function IconPlay() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <circle cx="10" cy="10" r="9" stroke="#4A9B8E" strokeWidth="1.5" />
+      <path d="M8 7.5l5.5 2.5L8 12.5V7.5z" fill="#4A9B8E" />
+    </svg>
+  );
+}
+
+function IconBubble() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path
+        d="M2 4a2 2 0 012-2h12a2 2 0 012 2v7a2 2 0 01-2 2H7l-5 4V4z"
+        stroke="#4A9B8E"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 // Feature tiles — 3 columns on desktop, 1 column on mobile
 const FEATURE_TILES = [
   {
-    icon: "📊",
+    icon: <IconBarChart />,
     name: "Progress Tracker",
     desc: "Daily check-in logging tinnitus loudness, jaw tension, neck tension, stress, and sleep. Visual trend graphs show your data over time.",
   },
   {
-    icon: "🎬",
+    icon: <IconPlay />,
     name: "Exercise Library",
     desc: "Every exercise with a demonstration video, written instructions, and the specific mechanism it targets.",
   },
   {
-    icon: "💬",
+    icon: <IconBubble />,
     name: "Community",
     desc: "Structured discussion spaces for jaw, neck, and postural patterns. Oliver actively present. Solution-focused.",
   },
@@ -246,7 +279,7 @@ function PlatformPreview({ content }) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-line border-t border-line">
         {FEATURE_TILES.map((tile) => (
           <div key={tile.name} className="bg-white px-5 py-[22px]">
-            <div className="w-9 h-9 rounded-lg bg-teal-bg flex items-center justify-center text-lg mb-3">
+            <div className="w-9 h-9 rounded-lg bg-teal-bg flex items-center justify-center mb-3">
               {tile.icon}
             </div>
             <p className="text-[14px] font-bold text-body mb-1">{tile.name}</p>

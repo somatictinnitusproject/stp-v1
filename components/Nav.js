@@ -1,12 +1,14 @@
 /*
   Sticky navigation bar shown on every page.
   - Logo on the left links back to the homepage.
-  - "Take the Free Test" CTA on the right links to the noise exposure screen.
-  - Subtle backdrop blur so content scrolling beneath it looks clean.
-  - No mobile menu needed — just logo + single button at all breakpoints.
+  - Right slot is handled by NavCta (Client Component) which conditionally renders:
+      - "Take the Free Test" button on most pages
+      - Nothing on test flow pages (noise-exposure, test-intro, test questions)
+      - "Back to Home" plain link on result pages
 */
 
 import Link from "next/link";
+import NavCta from "@/components/NavCta";
 
 export default function Nav() {
   return (
@@ -21,13 +23,8 @@ export default function Nav() {
           <span className="text-primary">Project</span>
         </Link>
 
-        {/* Primary CTA */}
-        <Link
-          href="/noise-exposure"
-          className="bg-primary hover:bg-primary-hover text-white text-sm font-medium px-[18px] py-2 rounded-[5px] transition-colors duration-150 no-underline"
-        >
-          Take the Free Test
-        </Link>
+        {/* Right slot — conditionally rendered based on current page */}
+        <NavCta />
       </div>
     </nav>
   );

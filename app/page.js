@@ -55,12 +55,20 @@ export default function HomePage() {
             most forms of tinnitus, it can often be addressed.
           </p>
 
-          {/* CTA buttons */}
-          <div className="flex flex-wrap gap-3">
-            <PrimaryButton href="/noise-exposure">Take the Free Test</PrimaryButton>
-            <SecondaryButton href="/learn-more">Learn More</SecondaryButton>
+          {/*
+            CTA buttons — stacked vertically, same width, so the layout
+            looks deliberate. "Takes ~5 minutes" sits directly beneath the
+            primary CTA, not orphaned below both buttons.
+          */}
+          <div className="flex flex-col gap-1 w-full max-w-[260px]">
+            <PrimaryButton href="/noise-exposure" className="w-full">
+              Take the Free Test
+            </PrimaryButton>
+            <p className="text-sm text-muted text-center">Takes ~5 minutes</p>
+            <SecondaryButton href="/learn-more" className="w-full">
+              Learn More
+            </SecondaryButton>
           </div>
-          <p className="text-sm text-muted mt-2">Takes ~5 minutes</p>
         </section>
 
         {/* ─── BELOW FOLD ───────────────────────────────────────────────────── */}
@@ -102,7 +110,7 @@ export default function HomePage() {
 
           {/* Static story card — links to Learn More for the full story */}
           <div className="bg-white border border-line rounded-[10px] px-8 py-7">
-            <p className="text-[15px] text-body leading-[1.75] italic">
+            <p className="text-[15px] text-body leading-[1.75]">
               I developed tinnitus at 16. It got progressively worse over months
               — affecting my sleep, my training, and my general quality of life
               to an extreme I simply didn't expect. I was told nothing could be
@@ -120,7 +128,7 @@ export default function HomePage() {
 
           <Divider />
 
-          <SectionLabel>What you get access to</SectionLabel>
+          <SectionLabel>Founding Members</SectionLabel>
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
             What you get access to
           </h2>
@@ -151,7 +159,7 @@ export default function HomePage() {
 
           <Divider />
 
-          <SectionLabel>The test</SectionLabel>
+          <SectionLabel>How it works</SectionLabel>
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
             What the test does
           </h2>
