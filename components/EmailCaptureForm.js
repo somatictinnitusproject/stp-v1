@@ -3,25 +3,23 @@
 /*
   EmailCaptureForm — the waitlist sign-up form on result pages.
   POSTs to /api/subscribe with email + classification.
-  On success, transitions to a confirmation state in-place (no page reload).
-  Built in: result/[classification] + API route step.
-
-  Props:
-    classification — "A" | "B" | "C"
-    spotsLeft      — number to display
-    onSuccess      — callback fired after successful submission
+  After success, calls onSuccess(email) so the result page can store
+  the email in context for the confirmation screen's duration follow-up.
 */
 
 import { useState } from "react";
+import { useTest } from "@/context/TestContext";
 
 export default function EmailCaptureForm({
   classification,
-  spotsLeft = 1847,
+  spotsLeft = 2000,
   onSuccess,
+  isC = false,
 }) {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { setSubscribedEmail } = useTest();
 
   const buttonLabel =
     classification === "C" ? "Join the Community" : "Claim Your Free Access";
@@ -44,6 +42,8 @@ export default function EmailCaptureForm({
         throw new Error(data.error ?? "Something went wrong. Please try again.");
       }
 
+      // Store email in context so the confirmation screen can send duration
+      setSubscribedEmail(email);
       onSuccess?.();
     } catch (err) {
       setError(err.message);
@@ -55,18 +55,20 @@ export default function EmailCaptureForm({
   return (
     <div id="email-capture" className="bg-white border border-line rounded-xl p-8 mb-8">
       <h2 className="text-[20px] font-bold text-body mb-2">
-        Join the waitlist — get free lifetime access
+        {isC ? "Join the community" : "Join the waitlist — get free lifetime access"}
       </h2>
       <p className="text-[15px] text-muted leading-relaxed mb-4">
-        The Somatic Tinnitus Project is launching soon. The first 2,000 people
-        to sign up get full access forever — no subscription fee, ever.
+        {isC
+          ? "Even if somatic tinnitus is not your primary issue, the Somatic Tinnitus Project community shares research, experiences, and support. Free to join, no obligation."
+          : "The Somatic Tinnitus Project is launching soon. The first 2,000 people to sign up get full access forever — no subscription fee, ever."}
       </p>
-      <p className="text-[13px] font-medium text-primary mb-4">
-        ↑ {spotsLeft.toLocaleString()} of 2,000 founding member spots remaining
-      </p>
+      {!isC && (
+        <p className="text-[13px] font-medium text-primary mb-4">
+          ↑ {spotsLeft.toLocaleString()} of 2,000 founding member spots remaining
+        </p>
+      )}
 
       <form onSubmit={handleSubmit}>
-        {/* On mobile: stack input + button. On sm+: side by side */}
         <div className="flex flex-col gap-3 sm:flex-row sm:gap-2.5">
           <input
             type="email"

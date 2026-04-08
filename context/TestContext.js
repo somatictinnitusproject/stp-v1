@@ -55,6 +55,10 @@ const initialState = {
 
   // Whether the test has been fully completed
   testComplete: false,
+
+  // Email stored after successful subscription so the confirmation screen
+  // can send a follow-up PATCH with the tinnitus duration field
+  subscribedEmail: null,
 };
 
 export function TestProvider({ children }) {
@@ -135,6 +139,12 @@ export function TestProvider({ children }) {
     });
   }
 
+  // Stores the email after successful subscription so the confirmation
+  // screen can send the optional duration field as a follow-up
+  function setSubscribedEmail(email) {
+    setTestState((prev) => ({ ...prev, subscribedEmail: email }));
+  }
+
   // Reset everything — used if user wants to retake the test
   function resetTest() {
     setTestState(initialState);
@@ -148,6 +158,7 @@ export function TestProvider({ children }) {
         recordResponse,
         setM4Asymmetric,
         finaliseTest,
+        setSubscribedEmail,
         resetTest,
       }}
     >

@@ -1,10 +1,7 @@
 /*
-  Homepage — the entry point of the site.
-  Tells the visitor what somatic tinnitus is, builds trust through Oliver's story,
-  and funnels them toward the free test.
-
-  This is a Server Component — no interactivity, just links and static content.
-  All navigation uses Next.js <Link> for prefetching.
+  Homepage — Server Component.
+  Oliver's story is a static card with a "Read the full story" link to /learn-more.
+  The expandable version lives on the Learn More page.
 */
 
 import Link from "next/link";
@@ -13,7 +10,6 @@ import Footer from "@/components/Footer";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
 
-// Small reusable label for section headings
 function SectionLabel({ children }) {
   return (
     <p className="text-[11px] font-bold text-primary uppercase tracking-[0.1em] mb-2.5">
@@ -22,7 +18,6 @@ function SectionLabel({ children }) {
   );
 }
 
-// Horizontal rule used between below-fold sections
 function Divider() {
   return <div className="h-px bg-line my-12" />;
 }
@@ -50,9 +45,7 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <PrimaryButton href="/noise-exposure">
-              Take the Free Test
-            </PrimaryButton>
+            <PrimaryButton href="/noise-exposure">Take the Free Test</PrimaryButton>
             <SecondaryButton href="/learn-more">Learn More</SecondaryButton>
           </div>
         </section>
@@ -61,7 +54,6 @@ export default function HomePage() {
         <section className="max-w-2xl mx-auto px-6 pb-20">
           <Divider />
 
-          {/* What is somatic tinnitus */}
           <SectionLabel>What is somatic tinnitus</SectionLabel>
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
             Tinnitus driven by your jaw and neck
@@ -76,7 +68,6 @@ export default function HomePage() {
 
           <Divider />
 
-          {/* Who this is for */}
           <SectionLabel>Who this is for</SectionLabel>
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
             You might recognise this
@@ -90,13 +81,12 @@ export default function HomePage() {
 
           <Divider />
 
-          {/* Oliver's story */}
           <SectionLabel>Oliver's story</SectionLabel>
-          <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-4">
+          <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
             Built from personal experience
           </h2>
 
-          {/* Story block — white card with italic quote */}
+          {/* Static story card — links to Learn More for the full story */}
           <div className="bg-white border border-line rounded-[10px] px-8 py-7">
             <p className="text-[15px] text-body leading-[1.75] italic">
               I developed tinnitus at 16. It got progressively worse over months
@@ -116,7 +106,6 @@ export default function HomePage() {
 
           <Divider />
 
-          {/* The test */}
           <SectionLabel>The test</SectionLabel>
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
             What the test does
@@ -128,9 +117,7 @@ export default function HomePage() {
           </p>
 
           <div className="mt-7">
-            <PrimaryButton href="/noise-exposure">
-              Take the Free Test
-            </PrimaryButton>
+            <PrimaryButton href="/noise-exposure">Take the Free Test</PrimaryButton>
           </div>
         </section>
       </main>

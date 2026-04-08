@@ -40,6 +40,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/*
+  Fix for mobile touch — iOS Safari applies a 300ms delay to click events
+  on non-anchor elements unless touch-action: manipulation is set.
+  This causes button onClick handlers to appear unresponsive on mobile.
+  cursor: pointer ensures consistent behaviour across touch + pointer devices.
+  -webkit-tap-highlight-color removes the grey flash on iOS tap.
+*/
+button,
+[role="button"] {
+  touch-action: manipulation;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
 /* Slide-in animation used between test questions */
 @keyframes slideIn {
   from {
