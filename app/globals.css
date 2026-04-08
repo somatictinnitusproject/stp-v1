@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* Force light mode — never follow system dark preference */
+:root {
+  color-scheme: light;
+}
+
+/*
+  Design token definitions for Tailwind v4.
+  Each --color-* variable becomes a Tailwind utility:
+    bg-primary, text-primary, border-primary, etc.
+  --font-inter is injected by Next.js font optimisation in layout.js.
+*/
+@theme {
+  --font-sans: var(--font-inter);
+
+  /* Brand */
+  --color-primary: #4A9B8E;
+  --color-primary-hover: #3D8578;
+  --color-teal-bg: #f0faf8;
+  --color-teal-border: #c8e8e3;
+
+  /* Text */
+  --color-body: #2D2D2D;
+  --color-heading: #1A1A2E;
+  --color-muted: #6B7280;
+
+  /* Surfaces */
+  --color-site: #F8F7F4;
+  --color-dark: #1C1C1C;
+
+  /* Borders */
+  --color-line: #E5E3DF;
+}
+
+body {
+  background-color: #F8F7F4;
+  color: #2D2D2D;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Slide-in animation used between test questions */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
