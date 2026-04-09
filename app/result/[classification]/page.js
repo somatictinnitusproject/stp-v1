@@ -338,7 +338,8 @@ export default function ResultPage({ params }) {
     <>
       <Nav />
 
-      <main className="max-w-[680px] mx-auto px-6 pt-12 pb-32">
+      {/* pb-32 on A/B leaves room for the sticky bar; Result C has no sticky bar so uses normal pb-20 */}
+      <main className={`max-w-[680px] mx-auto px-6 pt-12 ${isC ? "pb-20" : "pb-32"}`}>
 
         {/* 1. Result badge */}
         <div
@@ -477,7 +478,7 @@ export default function ResultPage({ params }) {
               A note from Oliver
             </h3>
             <div className="bg-white border border-line border-l-[3px] border-l-primary rounded-lg px-7 py-6">
-              <p className="text-[15px] text-body leading-[1.75] italic">
+              <p className="text-[15px] text-body leading-[1.75]">
                 {content.oliverNote}
               </p>
               <p className="text-[14px] text-muted font-medium mt-3">

@@ -163,7 +163,7 @@ export default function QuestionPage({ params }) {
     return (
       <div className="fixed inset-0 bg-[#F8F7F4] z-50 flex flex-col items-center justify-center gap-6">
         {/* Teal spinning ring */}
-        <div className="w-12 h-12 rounded-full border-4 border-line border-t-primary animate-spin" />
+        <div className="w-12 h-12 rounded-full border-4 border-[#D1D5DB] border-t-primary animate-spin" />
         <div className="text-center">
           <p className="text-[16px] font-medium text-muted tracking-[-0.01em]">
             Analysing your responses…
