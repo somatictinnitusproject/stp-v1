@@ -34,9 +34,9 @@ const CONTENT = {
     badgeText: "text-primary",
     dotColor: "bg-primary",
     headline:
-      "Your responses suggest your tinnitus has a significant somatic component",
+      "Your results strongly suggest your tinnitus has a physical, somatic cause",
     subtext:
-      "This means jaw tension, neck tension, or posture may be directly influencing your tinnitus.",
+      "This type of tinnitus can often reduce in volume when the underlying mechanics are addressed",
     // Short paragraphs shown directly under "What this means for you" heading, before email
     shortPara1:
       "Your movements produced responses most associated with jaw and neck involvement in tinnitus — suggesting a physical, addressable component that most tinnitus advice never touches.",
@@ -93,9 +93,9 @@ const CONTENT = {
     badgeText: "text-[#b07d2e]",
     dotColor: "bg-[#b07d2e]",
     headline:
-      "Your responses suggest somatic factors may be contributing to your tinnitus",
+      "Your results suggest your tinnitus may have a physical, somatic component",
     subtext:
-      "A mixed picture is more common than a clear-cut one. The patterns you showed are worth exploring.",
+      "This is worth exploring — even a partial physical component can often reduce tinnitus volume when the underlying mechanics are addressed",
     shortPara1:
       "Your responses suggest somatic factors may be playing a role alongside other possible causes. A mixed picture is more common than a clear-cut one.",
     shortPara2:
@@ -439,10 +439,6 @@ export default function ResultPage({ params }) {
                   </li>
                 ))}
               </ul>
-              <p className="text-[14px] text-muted leading-relaxed">
-                Founding members — the first 2,000 to sign up — get full access
-                permanently at no cost when it launches.
-              </p>
             </div>
           </>
         )}

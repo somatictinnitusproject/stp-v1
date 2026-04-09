@@ -115,21 +115,36 @@ export default function LearnMorePage() {
         <H2>Oliver's story</H2>
         <OliverStoryExpanded />
 
-        {/* What you get access to — teal callout box */}
+        {/* What you get access to — checklist format matching homepage */}
         <H2>What you get access to</H2>
-        <div className="bg-teal-bg border border-teal-border rounded-lg px-7 py-6 mt-3 mb-8">
-          <p className="text-[15px] text-body leading-[1.75]">
-            The Somatic Tinnitus Project is a structured five-phase framework
-            for identifying and addressing somatic tinnitus — built around the
-            same process that enabled me to go from 10/10 to silence. It
-            includes guided self-assessment, personalised driver protocols for
-            jaw and cervical patterns, a daily progress tracker, an exercise
-            library, and a community of people working through the same process.
-            Founding members — the first 2,000 to sign up — get full access
-            permanently at no cost. After that, membership opens at £2.99 per
-            month.
-          </p>
-        </div>
+        <p className="text-[15px] text-muted leading-[1.75] max-w-[580px] mt-3 mb-4">
+          The Somatic Tinnitus Project is a structured five-phase framework
+          for identifying and addressing somatic tinnitus — built around the
+          same process that enabled Oliver to go from debilitating tinnitus to
+          silence.
+        </p>
+        <ul className="list-none mb-4 max-w-[580px]">
+          {[
+            "Guided self-assessment identifying your specific driver pattern",
+            "Personalised TMJ and cervical protocols matched to your profile",
+            "Daily progress tracker with visual trend graphs",
+            "Exercise library with video demonstrations",
+            "A community of people working through the same process",
+          ].map((item) => (
+            <li
+              key={item}
+              className="relative text-[15px] text-muted py-2.5 pl-6 border-b border-line last:border-b-0 leading-relaxed"
+            >
+              <span className="absolute left-0 font-semibold text-primary">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <p className="text-[15px] text-muted leading-[1.75] max-w-[580px] mb-8">
+          Founding members — the first 2,000 to sign up — get full access
+          permanently at no cost. After that, membership opens at £2.99 per
+          month.
+        </p>
 
         <PrimaryButton href="/noise-exposure">Take the Free Test</PrimaryButton>
         <p className="text-sm text-muted mt-2">Takes ~5 minutes</p>

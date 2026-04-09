@@ -46,7 +46,7 @@ export default function HomePage() {
           </span>
 
           <h1 className="text-[clamp(28px,5vw,42px)] font-bold leading-[1.2] tracking-[-0.02em] text-body mb-5">
-            Your tinnitus might be more fixable than you think
+            Your tinnitus may be more fixable than you think — especially if it changes with movement or tension
           </h1>
 
           <p className="text-[18px] text-muted leading-[1.65] mb-9 max-w-[560px]">
