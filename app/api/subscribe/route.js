@@ -2,38 +2,33 @@
   EmailOctopus subscription API route — /api/subscribe
   POST only. Accepts: { email, classification, duration? }
 
-  This runs on the server — the EMAILOCTOPUS_API_KEY environment variable
-  is never sent to the browser. Set it in your Vercel project settings and
-  in a local .env.local file for development (never commit .env.local to git).
+  Two cases:
+  1. Initial sign-up — email + classification only.
+     Creates a new contact in EmailOctopus.
+  2. Duration update — email + classification + duration.
+     Sent from the confirmation screen after sign-up.
+     EmailOctopus doesn't update fields on a duplicate POST, so we use
+     the member ID (MD5 hash of lowercase email) to PUT an update instead.
 
-  EmailOctopus API docs: https://emailoctopus.com/api-documentation
-
-  Custom fields stored against the subscriber:
-    Classification — "A", "B", or "C"
-    Tinnitus duration — e.g. "1–3 years" (optional, sent from confirmation screen)
-
-  The list ID determines which automated email sequence fires.
-  Different sequences for A/B/C can be configured in EmailOctopus directly.
+  This runs on the server — API keys never reach the browser.
 */
 
 import { NextResponse } from "next/server";
+import { createHash } from "crypto";
 
-// Read from environment — set in .env.local (dev) and Vercel dashboard (prod)
 const EO_API_KEY = process.env.EMAILOCTOPUS_API_KEY;
 const EO_LIST_ID = process.env.EMAILOCTOPUS_LIST_ID;
 const EO_API_BASE = "https://emailoctopus.com/api/1.6";
 
 export async function POST(request) {
-  // Validate environment variables are set
   if (!EO_API_KEY || !EO_LIST_ID) {
-    console.error("Missing EMAILOCTOPUS_API_KEY or EMAILOCTOPUS_LIST_ID env vars");
+    console.error("Missing EmailOctopus env vars");
     return NextResponse.json(
       { error: "Server configuration error. Please try again later." },
       { status: 500 }
     );
   }
 
-  // Parse and validate the request body
   let body;
   try {
     body = await request.json();
@@ -50,7 +45,6 @@ export async function POST(request) {
     );
   }
 
-  // Basic email format check
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json(
       { error: "Please enter a valid email address." },
@@ -59,51 +53,63 @@ export async function POST(request) {
   }
 
   /*
-    Build the EmailOctopus subscriber payload.
-    Custom fields must match the field tags you set up in your
-    EmailOctopus list settings. Create two fields:
-      - "Classification" (text)
-      - "Tinnitus duration" (text)
-    The field tag becomes the key here (case-sensitive).
+    If duration is present, this is the confirmation screen follow-up.
+    EmailOctopus identifies contacts by the MD5 hash of their lowercase email.
+    We PUT to update the existing contact's TinnitusDuration field.
   */
-  const fields = {
-    Classification: classification.toUpperCase(),
-  };
-
   if (duration) {
-    fields["Tinnitus duration"] = duration;
+    const memberId = createHash("md5").update(email.toLowerCase()).digest("hex");
+    try {
+      const res = await fetch(
+        `${EO_API_BASE}/lists/${EO_LIST_ID}/contacts/${memberId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            api_key: EO_API_KEY,
+            fields: { TinnitusDuration: duration },
+          }),
+        }
+      );
+      const data = await res.json();
+      if (!res.ok) {
+        console.error("EmailOctopus update error:", data);
+      }
+    } catch (err) {
+      console.error("EmailOctopus update failed:", err);
+    }
+    // Always return success — duration is best-effort, don't block the UI
+    return NextResponse.json({ success: true });
   }
 
+  /*
+    Initial sign-up — create the contact with Classification field.
+  */
   const payload = {
     api_key: EO_API_KEY,
     email_address: email,
-    fields,
+    fields: { Classification: classification.toUpperCase() },
     status: "SUBSCRIBED",
   };
 
   try {
-    const eoResponse = await fetch(
-      `${EO_API_BASE}/lists/${EO_LIST_ID}/contacts`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }
-    );
+    const res = await fetch(`${EO_API_BASE}/lists/${EO_LIST_ID}/contacts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-    const eoData = await eoResponse.json();
+    const data = await res.json();
 
-    // EmailOctopus returns 200 for new subscribers and 200 with
-    // error.code "MEMBER_EXISTS_WITH_EMAIL_ADDRESS" for duplicates.
-    // We treat duplicates as success — the user is already on the list.
-    if (!eoResponse.ok) {
-      const errorCode = eoData?.error?.code;
+    if (!res.ok) {
+      const errorCode = data?.error?.code;
+      // Already subscribed — treat as success, show confirmation screen
       if (errorCode === "MEMBER_EXISTS_WITH_EMAIL_ADDRESS") {
         return NextResponse.json({ success: true });
       }
-      console.error("EmailOctopus error:", eoData);
+      console.error("EmailOctopus error:", data);
       return NextResponse.json(
-        { error: "Could not add you to the list. Please try again." },
+        { error: "Could not sign you up. Please try again." },
         { status: 500 }
       );
     }
@@ -118,7 +124,6 @@ export async function POST(request) {
   }
 }
 
-// Reject anything that isn't a POST
 export async function GET() {
   return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
 }

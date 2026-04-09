@@ -169,17 +169,20 @@ export default function ConfirmationPage() {
         </p>
         <div className="flex gap-3 justify-center mb-9">
           {[
-            { icon: <TikTokIcon />, label: "TikTok" },
-            { icon: <YouTubeIcon />, label: "YouTube" },
-            { icon: <InstagramIcon />, label: "Instagram" },
-          ].map(({ icon, label }) => (
-            <button
+            { icon: <TikTokIcon />, label: "TikTok", href: "https://www.tiktok.com/@somatictinnitusproject" },
+            { icon: <YouTubeIcon />, label: "YouTube", href: "https://www.youtube.com/@somatictinnitusproject" },
+            { icon: <InstagramIcon />, label: "Instagram", href: "https://www.instagram.com/somatictinnitusproject" },
+          ].map(({ icon, label, href }) => (
+            <a
               key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label={label}
               className="w-12 h-12 rounded-[10px] border-[1.5px] border-line bg-white flex items-center justify-center hover:border-primary transition-colors duration-150"
             >
               {icon}
-            </button>
+            </a>
           ))}
         </div>
 
