@@ -34,7 +34,7 @@
 }
 
 body {
-  background-color: #F8F7F4;
+  background-color: #F8F7F4 !important;
   color: #2D2D2D;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
