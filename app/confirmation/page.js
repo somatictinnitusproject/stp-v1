@@ -171,7 +171,7 @@ export default function ConfirmationPage() {
           {[
             { icon: <TikTokIcon />, label: "TikTok", href: "https://www.tiktok.com/@somatictinnitusproject" },
             { icon: <YouTubeIcon />, label: "YouTube", href: "https://www.youtube.com/@somatictinnitusproject" },
-            { icon: <InstagramIcon />, label: "Instagram", href: "https://www.instagram.com/somatictinnitusproject" },
+            { icon: <InstagramIcon />, label: "Instagram", href: "https://www.instagram.com/somatictinnitus" },
           ].map(({ icon, label, href }) => (
             <a
               key={label}
