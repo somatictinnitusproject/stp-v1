@@ -43,13 +43,8 @@ export default function QuestionPage({ params }) {
   // Loading overlay — shown for 1.75s when the user submits the final question
   const [showingLoader, setShowingLoader] = useState(false);
 
-  /*
-    For movement questions: buttons are disabled until the video has played.
-    Since we're using VideoPlaceholder (no real video yet), we start enabled
-    so the flow can be tested. Once real videos are wired up, this flips to
-    false and VideoPlayer fires onVideoComplete to enable them.
-  */
-  const [videoWatched, setVideoWatched] = useState(true);
+  // Buttons are always enabled — video is contextual, not a gate
+  const [videoWatched] = useState(true);
 
   const q = getQuestion(slot);
 
@@ -70,8 +65,7 @@ export default function QuestionPage({ params }) {
     } else {
       setSelectedIndex(null);
     }
-    // Reset video watch state for movement questions
-    setVideoWatched(q.type !== "movement" || q.videoId?.startsWith("PLACEHOLDER"));
+    // videoWatched is always true — no watch gate
   }, [slot]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!testState.noiseExposure || !q) return null;
