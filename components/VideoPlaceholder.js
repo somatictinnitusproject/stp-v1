@@ -18,10 +18,10 @@ export default function VideoPlaceholder({ videoId, title, large = false }) {
   if (isReal) {
     return (
       // Portrait container — 9:16 ratio, max 320px wide, centred
-      <div className="mx-auto w-full max-w-[320px]">
-        <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
+      <div className="mx-auto w-full max-w-[320px] isolate">
+        <div className="relative w-full bg-site rounded-[10px] overflow-hidden" style={{ paddingBottom: "177.78%" }}>
           <iframe
-            className="absolute inset-0 w-full h-full rounded-[10px]"
+            className="absolute inset-0 w-full h-full"
             src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
             title={title ?? "Video demonstration"}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
