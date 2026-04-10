@@ -207,7 +207,7 @@ export default function QuestionPage({ params }) {
         {/* Video — movement questions only */}
         {isMovement && (
           <div className="mb-6">
-            <VideoPlaceholder title={q.videoTitle} />
+            <VideoPlaceholder videoId={q.videoId} title={q.videoTitle} />
           </div>
         )}
 

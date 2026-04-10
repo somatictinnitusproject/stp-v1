@@ -8,19 +8,25 @@
 */
 
 import Link from "next/link";
+import Image from "next/image";
 import NavCta from "@/components/NavCta";
 
 export default function Nav() {
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-line">
+    <nav className="sticky top-0 z-50 bg-site border-b border-line">
       <div className="max-w-2xl mx-auto px-6 h-[60px] flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-[15px] font-semibold text-body hover:text-body no-underline"
-        >
-          Somatic Tinnitus{" "}
-          <span className="text-primary">Project</span>
+        {/* Logo + wordmark */}
+        <Link href="/" className="flex items-center gap-[10px] no-underline">
+          <Image
+            src="/logo.png"
+            alt="Somatic Tinnitus Project"
+            width={40}
+            height={40}
+            className="rounded-[8px]"
+          />
+          <span className="text-[15px] font-semibold text-body">
+            Somatic Tinnitus <span className="text-primary">Project</span>
+          </span>
         </Link>
 
         {/* Right slot — conditionally rendered based on current page */}

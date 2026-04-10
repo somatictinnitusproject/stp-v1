@@ -8,11 +8,11 @@
 */
 
 // Oliver's ~90-second introduction shown on the test intro screen
-export const INTRO_VIDEO = "PLACEHOLDER_INTRO";
+export const INTRO_VIDEO = "ny1kM1U6kuA";
 
 // Demonstration videos shown during each movement question
-export const M1_VIDEO = "PLACEHOLDER_M1"; // Jaw opening
-export const M2_VIDEO = "PLACEHOLDER_M2"; // Jaw side-to-side
-export const M3_VIDEO = "PLACEHOLDER_M3"; // Neck rotation
-export const M4_VIDEO = "PLACEHOLDER_M4"; // Neck extension
-export const M5_VIDEO = "PLACEHOLDER_M5"; // Shoulder shrug / pressure
+export const M1_VIDEO = "RyOvSjwTAa8"; // Jaw opening
+export const M2_VIDEO = "g-wb89GWEpo"; // Jaw protrusion
+export const M3_VIDEO = "wuLNStxgprg"; // Neck flexion
+export const M4_VIDEO = "AgEcfW2XgDI"; // Neck rotation
+export const M5_VIDEO = "j1z88cyT1U0"; // Chin retraction
