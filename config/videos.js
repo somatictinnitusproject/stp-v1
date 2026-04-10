@@ -15,4 +15,4 @@ export const M1_VIDEO = "HZf5uDRxCkA"; // Jaw opening
 export const M2_VIDEO = "u55by7l4lvg"; // Jaw protrusion
 export const M3_VIDEO = "VFgXG1-S-lE"; // Neck flexion
 export const M4_VIDEO = "M-ZMZF2_oYw"; // Neck rotation
-export const M5_VIDEO = "DaHdkYAgKGQ"; // Chin retraction
+export const M5_VIDEO = "NHo6q90AmZg"; // Chin retraction
