@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
+import { Analytics } from "@vercel/analytics/next";
 
 /*
   Inter is loaded via Next.js font optimisation — self-hosted at build time,
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="bg-site text-body font-sans min-h-screen">
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
