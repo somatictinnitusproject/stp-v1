@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
-
+import Script from 'next/script';
 /*
   Inter is loaded via Next.js font optimisation — self-hosted at build time,
   no Google requests in the browser. The "--font-inter" variable is referenced
@@ -33,6 +33,20 @@ export default function RootLayout({ children }) {
           Affects scrollbars, form controls, and other system-rendered UI.
         */}
         <meta name="color-scheme" content="light" />
+
+<Script
+  src="https://www.googletagmanager.com/gtag/js?id=G-WDR31WZ9SQ"
+  strategy="afterInteractive"
+/>
+<Script id="google-analytics" strategy="afterInteractive">
+  {`
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-WDR31WZ9SQ');
+  `}
+</Script>
+
       </head>
       <body className="bg-site text-body font-sans min-h-screen">
         <Providers>{children}</Providers>
