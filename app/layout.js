@@ -16,6 +16,10 @@ export const metadata = {
   title: "The Somatic Tinnitus Project",
   description:
     "Find out if your tinnitus has a somatic component — a free 5-minute movement test that classifies your result and points you toward the right approach.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 /*
