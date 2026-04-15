@@ -16,10 +16,6 @@ export const metadata = {
   title: "The Somatic Tinnitus Project",
   description:
     "Find out if your tinnitus has a somatic component — a free 5-minute movement test that classifies your result and points you toward the right approach.",
-  icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
-  },
 };
 
 /*
@@ -37,6 +33,8 @@ export default function RootLayout({ children }) {
           Affects scrollbars, form controls, and other system-rendered UI.
         */}
         <meta name="color-scheme" content="light" />
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/logo.png" />
 <Script
   src="https://www.googletagmanager.com/gtag/js?id=G-WDR31WZ9SQ"
   strategy="afterInteractive"
