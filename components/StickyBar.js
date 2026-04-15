@@ -13,7 +13,7 @@
 
 export default function StickyBar({
   variant = "default",
-  spotsLeft = 2000,
+  spotsLeft = 1000,
   emailSubmitted = false,
 }) {
   if (emailSubmitted) return null;

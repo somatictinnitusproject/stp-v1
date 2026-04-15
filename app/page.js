@@ -152,7 +152,7 @@ export default function HomePage() {
 
           {/* Closing line */}
           <p className="text-[15px] text-muted leading-[1.7] max-w-[580px]">
-            Founding members — the first 2,000 to sign up — get full access
+            Founding members — the first 1,000 to sign up — get full access
             permanently at no cost. After that, membership opens at £2.99 per
             month.
           </p>

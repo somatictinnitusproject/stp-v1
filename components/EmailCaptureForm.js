@@ -12,7 +12,7 @@ import { useTest } from "@/context/TestContext";
 
 export default function EmailCaptureForm({
   classification,
-  spotsLeft = 2000,
+  spotsLeft = 1000,
   onSuccess,
   isC = false,
 }) {
@@ -60,7 +60,7 @@ export default function EmailCaptureForm({
       <p className="text-[15px] text-muted leading-relaxed mb-4">
         {isC
           ? "Even if somatic tinnitus is not your primary issue, the Somatic Tinnitus Project community shares research, experiences, and support. Free to join, no obligation."
-          : "The Somatic Tinnitus Project is launching soon. The first 2,000 people to sign up get full access forever — no subscription fee, ever."}
+          : "The Somatic Tinnitus Project is launching soon. The first 1,000 people to sign up get full access forever — no subscription fee, ever."}
       </p>
 
       <form onSubmit={handleSubmit}>

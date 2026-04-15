@@ -293,7 +293,7 @@ function PlatformPreview({ content }) {
 
 // ─── Page ─────────────────────────────────────────────────────────────────
 
-const SPOTS_LEFT = 2000;
+const SPOTS_LEFT = 1000;
 
 export default function ResultPage({ params }) {
   const { classification } = React.use(params);

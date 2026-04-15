@@ -141,7 +141,7 @@ export default function LearnMorePage() {
           ))}
         </ul>
         <p className="text-[15px] text-muted leading-[1.75] max-w-[580px] mb-8">
-          Founding members — the first 2,000 to sign up — get full access
+          Founding members — the first 1,000 to sign up — get full access
           permanently at no cost. After that, membership opens at £2.99 per
           month.
         </p>
