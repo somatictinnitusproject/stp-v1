@@ -43,10 +43,10 @@ export default function PrivacyPage() {
             The Somatic Tinnitus Project is operated by Oliver (sole trader, UK).
             If you have any questions about this policy, contact us at{" "}
             <a
-              href="mailto:somatictinnitusproject@gmail.com"
+              href="mailto:oliver@somatictinnitusproject.com"
               className="text-primary underline hover:text-primary-hover transition-colors duration-150"
             >
-              somatictinnitusproject@gmail.com
+              oliver@somatictinnitusproject.com
             </a>
             .
           </p>
@@ -143,10 +143,10 @@ export default function PrivacyPage() {
             to access, correct, or delete the personal data we hold about you.
             To exercise any of these rights, email us at{" "}
             <a
-              href="mailto:somatictinnitusproject@gmail.com"
+              href="mailto:oliver@somatictinnitusproject.com"
               className="text-primary underline hover:text-primary-hover transition-colors duration-150"
             >
-              somatictinnitusproject@gmail.com
+              oliver@somatictinnitusproject.com
             </a>
             .
           </p>
