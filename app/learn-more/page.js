@@ -69,11 +69,12 @@ export default function LearnMorePage() {
         <div className="mt-5 mb-2 border-t border-line pt-4">
           <p className="text-[11px] font-bold text-primary uppercase tracking-[0.1em] mb-2.5">
             Research References
-         <p className="text-[13px] text-muted leading-[1.8]">
-          Michiels et al. — Trends in Hearing, 2018<br />
-          Levine — American Journal of Otolaryngology, 1999<br />
-          Haider et al. — Frontiers in Neuroscience, 2017
+        <p className="text-[13px] text-muted leading-[1.8]">
+          Michiels et al. &mdash; Trends in Hearing, 2018<br />
+          Levine &mdash; American Journal of Otolaryngology, 1999<br />
+          Haider et al. &mdash; Frontiers in Neuroscience, 2017
         </p>
+        
         </div>
 
         {/* Why most people are not told */}
