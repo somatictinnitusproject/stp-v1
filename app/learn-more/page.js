@@ -71,9 +71,9 @@ export default function LearnMorePage() {
             Research References
           </p>
           <p className="text-[13px] text-muted leading-[1.8]">
-            Ralli et al. — Journal of International Medical Research, 2017<br />
-            Sanchez et al. — PubMed, 2013<br />
-            Lee, Jin &amp; Jin — Audiology Research, 2022
+           Michiels et al. — Trends in Hearing, 2018
+           Levine — American Journal of Otolaryngology, 1999
+           Haider et al. — Frontiers in Neuroscience, 2017
           </p>
         </div>
 
