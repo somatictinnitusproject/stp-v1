@@ -61,7 +61,7 @@ export default function LearnMorePage() {
           Somatic tinnitus occurs when signals from the jaw, neck, or
           surrounding muscles interfere with the brain's sound processing
           system. Unlike tinnitus caused by permanent hearing damage, these
-          signals are driven by ongoing physical factors that can change — and
+          signals are driven by ongoing physical factors that can change and
           in many cases, be reduced.
         </BodyText>
 
@@ -83,7 +83,7 @@ export default function LearnMorePage() {
           Tinnitus is typically managed by audiologists and ENT specialists,
           whose training focuses on the auditory system. The jaw and neck
           connection is well-established in the research literature but rarely
-          makes it into standard clinical practice. This is not negligence — it
+          makes it into standard clinical practice. This is not negligence it
           is a gap between research and routine care.
         </BodyText>
 
@@ -119,7 +119,7 @@ export default function LearnMorePage() {
         <H2>What you get access to</H2>
         <p className="text-[15px] text-muted leading-[1.75] max-w-[580px] mt-3 mb-4">
           The Somatic Tinnitus Project is a structured five-phase framework
-          for identifying and addressing somatic tinnitus — built around the
+          for identifying and addressing somatic tinnitus, built around the
           same process that enabled Oliver to go from debilitating tinnitus to
           silence.
         </p>
