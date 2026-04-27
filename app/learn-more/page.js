@@ -6,7 +6,7 @@
 */
 
 import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer"; 
 import PrimaryButton from "@/components/PrimaryButton";
 import OliverStoryExpanded from "@/components/OliverStoryExpanded";
 import LearnMoreProgress from "@/components/LearnMoreProgress";
