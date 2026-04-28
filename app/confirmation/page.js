@@ -143,7 +143,7 @@ export default function ConfirmationPage() {
         </h1>
         <p className="text-[16px] text-muted leading-[1.7] max-w-[400px] mx-auto mb-1">
           When the Somatic Tinnitus Project launches, you will get full access —
-          no subscription fee, ever. I will be in touch.
+          no subscription fee, ever. I will be in touch. (Email may be in spam/promotions, move to primary to not miss updates.)
         </p>
         <p className="text-[16px] text-body font-medium mt-2 mb-8">— Oliver</p>
 
