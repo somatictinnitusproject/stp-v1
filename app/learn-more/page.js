@@ -44,7 +44,7 @@ export default function LearnMorePage() {
       {/* Sticky scroll progress — mobile only, shows fill % and current section name */}
       <LearnMoreProgress />
 
-      <main className="max-w-[680px] mx-auto px-6 pt-16 pb-20">
+      <main className="max-w-[680px] mx-auto px-6 pt-8 pb-20">
 
         {/* Page heading */}
         <h1 className="text-[clamp(24px,4vw,34px)] font-bold text-body tracking-[-0.02em] leading-[1.25] mb-3">

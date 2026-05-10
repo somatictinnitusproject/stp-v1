@@ -39,7 +39,7 @@ export default function HomePage() {
       <main>
         {/* ─── HERO ─────────────────────────────────────────────────────────── */}
         {/* pb reduced from pb-16 to pb-8 to close dead space between hero and next section */}
-        <section className="max-w-2xl mx-auto px-6 pt-20 pb-8">
+        <section className="max-w-2xl mx-auto px-6 pt-10 pb-8">
           <span className="inline-block text-[12px] font-semibold text-primary uppercase tracking-[0.08em] mb-5">
             Somatic Tinnitus
           </span>
