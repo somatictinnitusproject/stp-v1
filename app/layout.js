@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
+import MemberLoginBar from "@/components/MemberLoginBar";
 import Script from 'next/script';
 /*
   Inter is loaded via Next.js font optimisation — self-hosted at build time,
@@ -47,6 +48,7 @@ export default function RootLayout({ children }) {
 </Script>
       </head>
       <body className="bg-site text-body font-sans min-h-screen">
+        <MemberLoginBar />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,16 +1,11 @@
-/*
-  VideoPlaceholder — renders a YouTube Shorts embed when a real videoId is
-  provided, or falls back to a dark placeholder card for any remaining slots.
-
-  Props:
-    videoId — YouTube video ID string (e.g. "abc123"). If absent or starts
-              with "PLACEHOLDER", shows the placeholder card instead.
-    title   — label shown on the placeholder card (not shown when video is live)
-    large   — boolean, makes the placeholder play button larger (intro screen)
-
-  Shorts are 9:16 portrait. The embed is capped at 320px wide and centred so
-  it looks natural on both mobile and desktop without stretching.
-*/
+// VideoPlaceholder — renders a Cloudflare Stream video embed when a real
+// videoId is provided (32-character hex UID). If videoId is absent or
+// starts with "PLACEHOLDER", renders a styled placeholder instead.
+//
+// Props:
+//   videoId — Cloudflare Stream video UID
+//   title — accessible title for the iframe
+//   large — optional bool for sizing variant
 
 export default function VideoPlaceholder({ videoId, title, large = false }) {
   const isReal = videoId && !videoId.startsWith("PLACEHOLDER");
@@ -22,9 +17,9 @@ export default function VideoPlaceholder({ videoId, title, large = false }) {
         <div className="relative w-full bg-site rounded-[10px] overflow-hidden" style={{ paddingBottom: "177.78%" }}>
           <iframe
             className="absolute inset-0 w-full h-full"
-            src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+            src={`https://iframe.cloudflarestream.com/${videoId}`}
             title={title ?? "Video demonstration"}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; gyroscope; encrypted-media; picture-in-picture"
             allowFullScreen
           />
         </div>
