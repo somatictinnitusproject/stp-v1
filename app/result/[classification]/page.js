@@ -16,7 +16,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import React from "react";
-import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScoreBreakdown from "@/components/ScoreBreakdown";
 import StickyBar from "@/components/StickyBar";
@@ -333,8 +332,6 @@ export default function ResultPage({ params }) {
 
   return (
     <>
-      <Nav />
-
       {/* pb-32 on A/B leaves room for the sticky bar; Result C has no sticky bar so uses normal pb-20 */}
       <main className={`max-w-[680px] mx-auto px-6 pt-12 ${isC ? "pb-20" : "pb-32"}`}>
 
@@ -448,14 +445,14 @@ export default function ResultPage({ params }) {
               Ready to start?
             </h3>
             <p className="text-[15px] text-muted leading-[1.75] mb-5">
-              The framework is ready for you — based on your result, we can
-              personalise it from the moment you create your account.
+              The framework is ready for you — free to join, with your result
+              personalised from the moment you create your account.
             </p>
             <a
-              href={`https://somatictinnitusproject.com/signup?result=${classification}`}
+              href={`https://app.somatictinnitusproject.com/signup?result=${classification}`}
               className="inline-block bg-primary hover:bg-primary-hover text-white font-semibold text-[15px] px-6 py-3 rounded-[8px] transition-colors duration-150"
             >
-              Start your programme — create your account
+              Start your programme — free
             </a>
           </div>
         )}
@@ -474,7 +471,7 @@ export default function ResultPage({ params }) {
               more about the somatic mechanism.
             </p>
             <a
-              href="https://somatictinnitusproject.com/signup"
+              href="https://app.somatictinnitusproject.com/signup"
               className="inline-block border border-line text-body hover:border-primary hover:text-primary font-semibold text-[15px] px-6 py-3 rounded-[8px] transition-colors duration-150"
             >
               Explore the platform

@@ -5,7 +5,6 @@
 */
 
 import Link from "next/link";
-import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
@@ -35,8 +34,6 @@ function TickItem({ children }) {
 export default function HomePage() {
   return (
     <>
-      <Nav />
-
       <main>
         {/* ─── HERO ─────────────────────────────────────────────────────────── */}
         {/* pb reduced from pb-16 to pb-8 to close dead space between hero and next section */}
@@ -146,7 +143,7 @@ export default function HomePage() {
             <TickItem>Member community</TickItem>
           </ul>
 
-          <PrimaryButton href="https://somatictinnitusproject.com/signup">
+          <PrimaryButton href="https://app.somatictinnitusproject.com/signup">
             Create your account
           </PrimaryButton>
 

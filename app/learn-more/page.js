@@ -5,8 +5,7 @@
   Server Component — no interactivity, just text and links.
 */
 
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer"; 
+import Footer from "@/components/Footer";
 import PrimaryButton from "@/components/PrimaryButton";
 import OliverStoryExpanded from "@/components/OliverStoryExpanded";
 import LearnMoreProgress from "@/components/LearnMoreProgress";
@@ -40,7 +39,6 @@ function BodyText({ children }) {
 export default function LearnMorePage() {
   return (
     <>
-      <Nav />
       {/* Sticky scroll progress — mobile only, shows fill % and current section name */}
       <LearnMoreProgress />
 
