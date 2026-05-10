@@ -5,6 +5,7 @@
 */
 
 import Link from "next/link";
+import MemberLoginBar from "@/components/MemberLoginBar";
 import Footer from "@/components/Footer";
 import PrimaryButton from "@/components/PrimaryButton";
 import SecondaryButton from "@/components/SecondaryButton";
@@ -34,6 +35,7 @@ function TickItem({ children }) {
 export default function HomePage() {
   return (
     <>
+      <MemberLoginBar />
       <main>
         {/* ─── HERO ─────────────────────────────────────────────────────────── */}
         {/* pb reduced from pb-16 to pb-8 to close dead space between hero and next section */}

@@ -5,6 +5,7 @@
   Server Component — no interactivity, just text and links.
 */
 
+import MemberLoginBar from "@/components/MemberLoginBar";
 import Footer from "@/components/Footer";
 import PrimaryButton from "@/components/PrimaryButton";
 import OliverStoryExpanded from "@/components/OliverStoryExpanded";
@@ -39,6 +40,7 @@ function BodyText({ children }) {
 export default function LearnMorePage() {
   return (
     <>
+      <MemberLoginBar />
       {/* Sticky scroll progress — mobile only, shows fill % and current section name */}
       <LearnMoreProgress />
 
