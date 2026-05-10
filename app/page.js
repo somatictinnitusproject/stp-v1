@@ -128,34 +128,27 @@ export default function HomePage() {
 
           <Divider />
 
-          <SectionLabel>Founding Members</SectionLabel>
+          <SectionLabel>Join the platform</SectionLabel>
           <h2 className="text-[22px] font-bold text-body tracking-[-0.01em] mb-3">
-            What you get access to
+            The platform is live
           </h2>
 
-          {/* Intro sentence */}
           <p className="text-[16px] text-muted leading-[1.7] max-w-[580px] mb-4">
-            The Somatic Tinnitus Project is a structured five-phase framework
-            for identifying and addressing somatic tinnitus — built around the
-            same process that enabled Oliver to go from debilitating tinnitus to
-            silence.
+            A complete somatic tinnitus rehabilitation framework, built for
+            people whose tinnitus has physical drivers.
           </p>
 
-          {/* Tick list */}
-          <ul className="list-none mb-4 max-w-[580px]">
-            <TickItem>Guided self-assessment identifying your specific driver pattern</TickItem>
-            <TickItem>Personalised TMJ and cervical protocols matched to your profile</TickItem>
-            <TickItem>Daily progress tracker with visual trend graphs</TickItem>
-            <TickItem>Exercise library with video demonstrations</TickItem>
-            <TickItem>A community of people working through the same process</TickItem>
+          <ul className="list-none mb-6 max-w-[580px]">
+            <TickItem>Personalised five-phase framework based on your assessment</TickItem>
+            <TickItem>Daily practice sessions tailored to your protocol</TickItem>
+            <TickItem>Progress tracker and analytics</TickItem>
+            <TickItem>Exercise library with demonstration videos</TickItem>
+            <TickItem>Member community</TickItem>
           </ul>
 
-          {/* Closing line */}
-          <p className="text-[15px] text-muted leading-[1.7] max-w-[580px]">
-            Founding members — the first 1,000 to sign up — get full access
-            permanently at no cost. After that, membership opens at £2.99 per
-            month.
-          </p>
+          <PrimaryButton href="https://somatictinnitusproject.com/signup">
+            Create your account
+          </PrimaryButton>
 
           <Divider />
 

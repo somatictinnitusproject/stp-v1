@@ -19,7 +19,6 @@ import React from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import ScoreBreakdown from "@/components/ScoreBreakdown";
-import EmailCaptureForm from "@/components/EmailCaptureForm";
 import StickyBar from "@/components/StickyBar";
 import DisclaimerText from "@/components/DisclaimerText";
 import { useTest } from "@/context/TestContext";
@@ -229,10 +228,11 @@ const FEATURE_TILES = [
 
 // Tick items for the "What happens next" section
 const WHAT_HAPPENS_NEXT = [
-  "Your personalised tinnitus driver profile identified",
-  "A step-by-step plan matched to your specific pattern",
-  "Track tinnitus, jaw tension, neck tension, and sleep over time",
-  "A community of people working through the same process",
+  "Personalised five-phase framework based on your assessment",
+  "Daily practice sessions tailored to your protocol",
+  "Progress tracker and analytics",
+  "Exercise library with demonstration videos",
+  "Member community",
 ];
 
 // ─── Platform preview block (A and B only) ────────────────────────────────
@@ -293,13 +293,10 @@ function PlatformPreview({ content }) {
 
 // ─── Page ─────────────────────────────────────────────────────────────────
 
-const SPOTS_LEFT = 1000;
-
 export default function ResultPage({ params }) {
   const { classification } = React.use(params);
   const router = useRouter();
   const { testState } = useTest();
-  const [emailSubmitted, setEmailSubmitted] = useState(false);
 
   // Sticky bar is hidden on page load and appears after 3 seconds
   const [stickyVisible, setStickyVisible] = useState(false);
@@ -427,7 +424,7 @@ export default function ResultPage({ params }) {
               </h3>
               <p className="text-[15px] text-body leading-[1.75] mb-4">
                 The Somatic Tinnitus Project is a structured five-phase framework
-                for identifying and addressing somatic tinnitus — currently in development.
+                for identifying and addressing somatic tinnitus.
               </p>
               <ul className="list-none mb-4">
                 {WHAT_HAPPENS_NEXT.map((item) => (
@@ -444,17 +441,45 @@ export default function ResultPage({ params }) {
           </>
         )}
 
-        {/* 10. Email capture */}
-        {!emailSubmitted && (
-          <EmailCaptureForm
-            classification={classification.toUpperCase()}
-            spotsLeft={isC ? undefined : SPOTS_LEFT}
-            onSuccess={() => {
-              setEmailSubmitted(true);
-              router.push("/confirmation");
-            }}
-            isC={isC}
-          />
+        {/* 10. Signup CTA — A and B */}
+        {!isC && (
+          <div className="bg-white border border-line rounded-[10px] px-7 py-7 mb-8">
+            <h3 className="text-[20px] font-bold text-body tracking-[-0.01em] mb-2">
+              Ready to start?
+            </h3>
+            <p className="text-[15px] text-muted leading-[1.75] mb-5">
+              The framework is ready for you — based on your result, we can
+              personalise it from the moment you create your account.
+            </p>
+            <a
+              href={`https://somatictinnitusproject.com/signup?result=${classification}`}
+              className="inline-block bg-primary hover:bg-primary-hover text-white font-semibold text-[15px] px-6 py-3 rounded-[8px] transition-colors duration-150"
+            >
+              Start your programme — create your account
+            </a>
+          </div>
+        )}
+
+        {/* 10C. Soft CTA — C only */}
+        {isC && (
+          <div className="bg-white border border-line rounded-[10px] px-7 py-7 mb-8">
+            <h3 className="text-[18px] font-bold text-body tracking-[-0.01em] mb-2">
+              Your tinnitus may not be primarily somatic
+            </h3>
+            <p className="text-[15px] text-muted leading-[1.75] mb-5">
+              Your assessment didn't show a strong somatic pattern. The framework
+              is built specifically for people with confirmed somatic drivers — if
+              that pattern becomes clearer over time, the test will always be
+              here. The platform is also free to explore if you'd like to learn
+              more about the somatic mechanism.
+            </p>
+            <a
+              href="https://somatictinnitusproject.com/signup"
+              className="inline-block border border-line text-body hover:border-primary hover:text-primary font-semibold text-[15px] px-6 py-3 rounded-[8px] transition-colors duration-150"
+            >
+              Explore the platform
+            </a>
+          </div>
         )}
 
         {/* 11. Platform preview — A and B only */}
@@ -500,20 +525,9 @@ export default function ResultPage({ params }) {
 
       <Footer />
 
-      {/*
-        Sticky bar — delayed 3 seconds on result pages.
-        A & B use default variant (teal, spot counter).
-        C uses community variant.
-      */}
+      {/* Sticky bar — A and B only, appears after 3-second delay */}
       {stickyVisible && !isC && (
-        <StickyBar
-          variant="default"
-          spotsLeft={SPOTS_LEFT}
-          emailSubmitted={emailSubmitted}
-        />
-      )}
-      {stickyVisible && isC && (
-        <StickyBar variant="community" emailSubmitted={emailSubmitted} />
+        <StickyBar classification={classification} />
       )}
     </>
   );

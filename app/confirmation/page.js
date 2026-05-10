@@ -33,7 +33,6 @@ const REINFORCEMENT_ITEMS = [
   "A daily progress tracker to make your improvement visible over time",
   "An exercise library with demonstration videos for every technique",
   "A community of people working through the same process",
-  "All of it permanently free — no subscription, ever",
 ];
 
 // ─── SVG social icons ─────────────────────────────────────────────────────
@@ -79,6 +78,11 @@ export default function ConfirmationPage() {
   const [selectedDuration, setSelectedDuration] = useState(null);
   const [saved, setSaved] = useState(false);
   const [saveError, setSaveError] = useState(false);
+
+  // Redirect all visitors to home — confirmation page is retired post-V2 launch
+  useEffect(() => {
+    window.location.replace("https://somatictinnitusproject.com");
+  }, []);
 
   // Guard: don't allow direct access without completing the test
   useEffect(() => {
