@@ -1,18 +1,18 @@
 // MemberLoginBar — discreet member login prompt placed between the page
-// header and the main hero content. Visually quiet enough not to compete
-// with the primary "Take the Free Test" CTA, but discoverable for returning
-// members. Centered, spaced for mobile-first display.
+// header and the main hero content. Adjusted for tighter spacing and
+// larger readable text.
 
 export default function MemberLoginBar() {
   return (
     <div
       style={{
         width: '100%',
-        padding: '20px 16px',
+        padding: '12px 16px',
         textAlign: 'center',
-        fontSize: '15px',
+        fontSize: '17px',
         color: '#5a5a55',
         backgroundColor: 'transparent',
+        borderBottom: '1px solid #e5e5e0',
       }}
     >
       Already a member?{' '}
