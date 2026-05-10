@@ -7,7 +7,7 @@ export default function MemberLoginBar() {
     <div
       style={{
         width: '100%',
-        padding: '0px 16px 12px 16px',
+        padding: '6px 16px 10px 16px',
         textAlign: 'center',
         fontSize: '17px',
         color: '#5a5a55',
