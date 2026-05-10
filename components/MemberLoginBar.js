@@ -1,19 +1,18 @@
-// MemberLoginBar — thin utility bar at the top of every page directing
-// existing members to the V2 platform. Sits above the main header so it
-// doesn't compete with the primary "Take the Free Test" CTA but remains
-// discoverable for returning members.
+// MemberLoginBar — discreet member login prompt placed between the page
+// header and the main hero content. Visually quiet enough not to compete
+// with the primary "Take the Free Test" CTA, but discoverable for returning
+// members. Centered, spaced for mobile-first display.
 
 export default function MemberLoginBar() {
   return (
     <div
       style={{
         width: '100%',
-        backgroundColor: '#f4f4f0',
-        borderBottom: '1px solid #e5e5e0',
-        padding: '8px 16px',
+        padding: '20px 16px',
         textAlign: 'center',
-        fontSize: '13px',
+        fontSize: '15px',
         color: '#5a5a55',
+        backgroundColor: 'transparent',
       }}
     >
       Already a member?{' '}
@@ -23,6 +22,7 @@ export default function MemberLoginBar() {
           color: '#3a8073',
           fontWeight: 600,
           textDecoration: 'none',
+          marginLeft: '4px',
         }}
       >
         Log in →

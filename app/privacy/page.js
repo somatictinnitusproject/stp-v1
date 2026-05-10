@@ -5,7 +5,6 @@
   Written for a UK-based solo operator (GDPR/UK GDPR applicable).
 */
 
-import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata = {
@@ -28,8 +27,6 @@ function Section({ heading, children }) {
 export default function PrivacyPage() {
   return (
     <>
-      <Nav />
-
       <main className="max-w-[640px] mx-auto px-6 pt-16 pb-20">
         <h1 className="text-[28px] font-bold text-body tracking-[-0.02em] mb-2">
           Privacy Policy

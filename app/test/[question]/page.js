@@ -18,7 +18,6 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import Nav from "@/components/Nav";
 import ProgressBar from "@/components/ProgressBar";
 import ResponseButton from "@/components/ResponseButton";
 import VideoPlaceholder from "@/components/VideoPlaceholder";
@@ -74,7 +73,6 @@ export default function QuestionPage({ params }) {
   if (q.type === "transition") {
     return (
       <>
-        <Nav />
         <div className="max-w-[600px] mx-auto px-6 py-24 text-center">
           {/* Teal circle with checkmark */}
           <div className="w-14 h-14 rounded-full bg-teal-bg border border-teal-border flex items-center justify-center mx-auto mb-6 text-[22px]">
@@ -170,8 +168,6 @@ export default function QuestionPage({ params }) {
 
   return (
     <>
-      <Nav />
-
       {/* Progress bar — hidden on transition (handled above), visible on all others */}
       <ProgressBar
         current={progressNumber}

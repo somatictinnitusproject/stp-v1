@@ -12,17 +12,31 @@ export default function VideoPlaceholder({ videoId, title, large = false }) {
 
   if (isReal) {
     return (
-      // Portrait container — 9:16 ratio, max 320px wide, centred
-      <div className="mx-auto w-full max-w-[320px] isolate">
-        <div className="relative w-full bg-site rounded-[10px] overflow-hidden" style={{ paddingBottom: "177.78%" }}>
-          <iframe
-            className="absolute inset-0 w-full h-full"
-            src={`https://iframe.cloudflarestream.com/${videoId}`}
-            title={title ?? "Video demonstration"}
-            allow="accelerometer; gyroscope; encrypted-media; picture-in-picture"
-            allowFullScreen
-          />
-        </div>
+      <div
+        style={{
+          aspectRatio: '16 / 9',
+          width: '100%',
+          maxWidth: '720px',
+          margin: '0 auto',
+          backgroundColor: '#000',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          position: 'relative',
+        }}
+      >
+        <iframe
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            border: 0,
+          }}
+          src={`https://iframe.cloudflarestream.com/${videoId}`}
+          title={title ?? "Video demonstration"}
+          allow="accelerometer; gyroscope; encrypted-media; picture-in-picture"
+          allowFullScreen
+        />
       </div>
     );
   }

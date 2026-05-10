@@ -8,7 +8,6 @@
 */
 
 import { useRouter } from "next/navigation";
-import Nav from "@/components/Nav";
 import TimedPrompt from "@/components/TimedPrompt";
 import { useTest } from "@/context/TestContext";
 
@@ -30,8 +29,6 @@ export default function NoiseExposurePage() {
 
   return (
     <>
-      <Nav />
-
       <div className="max-w-[600px] mx-auto px-6 py-20">
         <span className="block text-[12px] font-semibold text-primary uppercase tracking-[0.08em] mb-4">
           Before we begin

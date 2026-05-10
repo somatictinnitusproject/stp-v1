@@ -11,7 +11,6 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Nav from "@/components/Nav";
 import VideoPlaceholder from "@/components/VideoPlaceholder";
 import PrimaryButton from "@/components/PrimaryButton";
 import { useTest } from "@/context/TestContext";
@@ -42,8 +41,6 @@ export default function TestIntroPage() {
 
   return (
     <>
-      <Nav />
-
       <div className="max-w-[600px] mx-auto px-6 pt-[60px] pb-20">
         {/* Intro video placeholder — large play button */}
         <div className="mb-8">

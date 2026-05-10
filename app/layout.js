@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
+import Nav from "@/components/Nav";
 import MemberLoginBar from "@/components/MemberLoginBar";
 import Script from 'next/script';
 /*
@@ -48,8 +49,11 @@ export default function RootLayout({ children }) {
 </Script>
       </head>
       <body className="bg-site text-body font-sans min-h-screen">
-        <MemberLoginBar />
-        <Providers>{children}</Providers>
+        <Providers>
+          <Nav />
+          <MemberLoginBar />
+          {children}
+        </Providers>
       </body>
     </html>
   );
